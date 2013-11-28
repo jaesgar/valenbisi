@@ -1,0 +1,16 @@
+{
+  "name": "Valenbisi",
+  "description": "App to check availability in Valenbisi",
+  "version": "1.0",
+  "manifest_version": 2,
+  
+  "browser_action": {
+    "default_icon" : "icon.png",
+    "default_title": "Start Event Page",
+	"default_popup": "valenbisi.html"
+  },
+  "permissions": ["http://www.valenbisi.es/*"],
+  
+  "web_accessible_resources": ["icon.png"]
+  
+}
