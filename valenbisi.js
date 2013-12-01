@@ -1,4 +1,4 @@
-function showBikes (name, station){
+function showBikes (station,name){
 	  var xhr = new XMLHttpRequest();
        xhr.open("GET", "http://www.valenbisi.es/service/stationdetails/valence/" + station, true);
 	   xhr.onreadystatechange = function() {
@@ -19,7 +19,7 @@ function showBikes (name, station){
       xhr.send();
 }
 
-//localStorage["valenbisi"] = JSON.stringify({"test1":1,"test2":2});
+//localStorage["valenbisi"] = JSON.stringify({1:"test1",2:"test2"});
 
 if (localStorage["valenbisi"]) {
 	var conf = JSON.parse(localStorage["valenbisi"]);

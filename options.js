@@ -1,4 +1,4 @@
-function showOption (name, station){
+function showOption (station, name){
     optionList = document.getElementById("optionsList");
     newBike = "<li id=\"station" + station + "\">" 
                           + "<strong>" + name + "</strong>" 
@@ -33,14 +33,13 @@ function showOptions() {
 function removeOption (removeButton) {
 	var optionList = document.getElementById("optionsList");
 	optionList.innerHTML = "";
-	alert(removeButton.target.value);
-//	showOptions();
+	if (localStorage["valenbisi"]) {
+		var conf = JSON.parse(localStorage["valenbisi"]);
+		delete conf[removeButton.target.value];
+		localStorage["valenbisi"] = JSON.stringify(conf);
+	}
+	showOptions();
 }
 
-function removedOption () {
-	var optionList = document.getElementById("optionsList");
-	optionList.innerHTML = "";
-//	showOptions();
-}
 
 showOptions();
