@@ -6,6 +6,7 @@ function showBikes (name, station){
             if (xhr.status == 200) {
 			  var free = xhr.responseXML.getElementsByTagName("free")[0];
 			  var bicis = xhr.responseXML.getElementsByTagName("available")[0];
+			  
 			  var report= document.getElementById("report");
   			  var newBike = "<div><strong>" + name + "</strong>" 
 						  + " bicis: " +  bicis.textContent
@@ -18,5 +19,12 @@ function showBikes (name, station){
       xhr.send();
 }
 
-showBikes("test1", 1);
-showBikes("test2", 2);
+//localStorage["valenbisi"] = JSON.stringify({"test1":1,"test2":2});
+
+if (localStorage["valenbisi"]) {
+	var conf = JSON.parse(localStorage["valenbisi"]);
+	for (var key in conf){
+		showBikes(key, conf[key]);
+	}
+}
+
