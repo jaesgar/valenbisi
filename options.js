@@ -8,9 +8,6 @@ function showOption (station, name){
 	optionList.innerHTML = optionList.innerHTML + newBike;
 	removeButton = document.querySelector("#remove"+station);
 	removeButton.value= station;
-//	removeButton.addEventListener("click", function () {alert(this.stationId);removeOption(this.stationId);}, false);
-//	removeButton.addEventListener("click", removeOption, false);
-
 }
 
 
@@ -41,5 +38,24 @@ function removeOption (removeButton) {
 	showOptions();
 }
 
+function addOption (){
+	station = document.querySelector("#station");
+	nickName = document.querySelector("#nickName");
+	stationNumber = parseInt(station.value);
+	if (nickName.value != "" && station.value != "" && !isNaN(stationNumber) && stationNumber > 0){
+		var conf = JSON.parse(localStorage["valenbisi"]);
+		conf[stationNumber] = nickName.value;
+		localStorage["valenbisi"]  = JSON.stringify(conf);
+		showOptions();
+		station.value="";
+		nickName.value="";
+	}
+}
 
-showOptions();
+function loadOptions(){
+	showOptions();	
+	document.querySelector('#saveOption').addEventListener('click', addOption);
+}
+
+
+document.addEventListener('DOMContentLoaded', loadOptions);
